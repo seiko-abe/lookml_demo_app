@@ -31,6 +31,11 @@ view:store_master {
     type: number
     sql: ${TABLE}."経度" ;;
   }
+  dimension: customer_location {
+    type: location
+    sql_latitude: ${TABLE}."緯度"  ;;
+    sql_longitude: ${TABLE}."経度";;
+  }
   dimension:side_dish  {
     type: number
     sql: ${TABLE}."惣菜" ;;
