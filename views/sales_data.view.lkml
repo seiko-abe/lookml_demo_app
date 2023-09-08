@@ -50,8 +50,8 @@ view: sales_data {
     label: "売上金額"
     sql: ${TABLE}."売上" ;;
   }
-  measure: count {
-    type: count
-    drill_fields: [store_id, product_id, customer_id, .count, .count]
-  }
+  # measure: count {
+  #   type: count
+  #   drill_fields: [store_id, product_id, customer_id, .count]
+  # }
 }
