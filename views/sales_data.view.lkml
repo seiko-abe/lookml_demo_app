@@ -45,6 +45,11 @@ view: sales_data {
     type: number
     sql: ${TABLE}."受注日付KEY" ;;
   }
+  measure: earnings_total {
+    type: sum
+    label: "売上金額"
+    sql: ${earnings} ;;
+  }
   measure: count {
     type: count
     drill_fields: [store_id, product_id, customer_id, .count, .count]
