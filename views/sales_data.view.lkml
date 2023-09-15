@@ -3,7 +3,7 @@ view: sales_data {
   drill_fields: [store_id]
 
   dimension: store_id {
-    # primary_key: yes
+    primary_key: yes
     type: number
     sql: ${TABLE}."店舗ID" ;;
   }
@@ -28,7 +28,6 @@ view: sales_data {
     sql: ${TABLE}."伝票番号" ;;
   }
   dimension:earnings  {
-    primary_key: yes
     type: number
     sql: ${TABLE}."売上" ;;
   }
@@ -59,7 +58,7 @@ view: sales_data {
   measure: sales_amount {
     type: sum
     label: "売上金額"
-    sql: ${quantity} * ${earnings};;
+    sql: ${TABLE}."売上";;
   }
 
   measure: count {
