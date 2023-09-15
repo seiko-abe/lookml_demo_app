@@ -58,7 +58,7 @@ view: sales_data {
   measure: sales_amount {
     type: sum
     label: "売上金額"
-    sql: ${TABLE}."数量" * ${TABLE}."売上";;
+    sql: ${quantity} * ${earnings};;
   }
 
   measure: count {
