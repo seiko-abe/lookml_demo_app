@@ -50,11 +50,17 @@ view: sales_data {
   #   label: "売上金額"
   #   sql: ${TABLE}."売上" ;;
   # }
-  measure: quantity_total {
+  # measure: quantity_total {
+  #   type: sum
+  #   label: "合計(売上数量)"
+  #   sql: ${TABLE}."数量";;
+  # }
+  measure: sales_amount {
     type: sum
-    label: "合計(売上数量)"
-    sql: ${TABLE}."数量";;
+    label: "売上金額合計"
+    sql: ${TABLE}."数量" * ${TABLE}."売上";;
   }
+
   measure: count {
     type: count
     drill_fields: [store_id, product_id, customer_id, .count]
