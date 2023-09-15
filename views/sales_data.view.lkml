@@ -20,7 +20,7 @@ view: sales_data {
     sql: ${TABLE}."荒利" ;;
   }
   dimension:quantity  {
-    type: string
+    type: number
     sql: ${TABLE}."数量" ;;
   }
   dimension:slip_number  {
@@ -28,7 +28,7 @@ view: sales_data {
     sql: ${TABLE}."伝票番号" ;;
   }
   dimension:earnings  {
-    type: string
+    type: number
     sql: ${TABLE}."売上" ;;
   }
   dimension:product_id {
