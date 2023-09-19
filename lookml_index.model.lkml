@@ -19,36 +19,37 @@ include: "/views/**/*.view.lkml"                # include all views in the views
 #   }
 # }
 
-explore: store_master {
-  join: sales_data {
+  explore: sales_data {
+  join: store_master {
     type: left_outer
     relationship: many_to_one
-    sql_on: ${store_master.store_id} = ${store_id} ;;
-  }}
+    sql_on: ${sales_data.store_id} = ${store_master.store_id} ;;
+  }
+  }
   explore: budget_master {
     join: sales_data {
       type: left_outer
       relationship: many_to_one
-      sql_on: ${budget_master.store_id} = ${store_id} ;;
+      sql_on: ${budget_master.store_id} = ${sales_data.store_id} ;;
     }}
   explore: product_master {
     join: sales_data {
       type: left_outer
       relationship: many_to_one
-      sql_on: ${product_master.product_id} = ${product_id} ;;
+      sql_on: ${product_master.product_id} = ${sales_data.product_id} ;;
     }
   }
   explore: category_master {
     join: product_master {
       type: left_outer
       relationship: many_to_one
-      sql_on: ${category_master.category_id} = ${category_id} ;;
+      sql_on: ${category_master.category_id} = ${product_master.category_id} ;;
     }
     }
   explore: member {
     join: sales_data {
       type: left_outer
       relationship: many_to_one
-      sql_on: ${member.customer_id} = ${customer_id} ;;
+      sql_on: ${member.customer_id} = ${sales_data.customer_id} ;;
     }
   }
