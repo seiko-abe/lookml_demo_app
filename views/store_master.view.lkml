@@ -113,6 +113,11 @@ view:store_master {
     # hidden: yes
     sql: ${TABLE}."地域ID" ;;
   }
+  measure: sales_amount {
+    type: sum
+    label: "売上金額"
+    sql: ${TABLE}."売上";;
+  }
   measure: count {
     type: count
     drill_fields: [store_id, region_id, .count]
