@@ -49,7 +49,7 @@ include: "/views/**/*.view.lkml"                # include all views in the views
   explore: member {
     join: sales_data {
       type: left_outer
-      relationship: many_to_one
+      relationship: one_to_many
       sql_on: ${member.customer_id} = ${sales_data.customer_id} ;;
     }
   }
