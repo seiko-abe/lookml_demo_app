@@ -15,6 +15,11 @@ view: budget_master {
     type: number
     sql: ${TABLE}."予算額" ;;
   }
+  measure: budget_total {
+    type: sum
+    label: "合計予算"
+    sql: ${TABLE}."予算額";;
+  }
   measure: count {
     type: count
     drill_fields: [store_id]

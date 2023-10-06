@@ -16,6 +16,7 @@ view:product_master {
     # hidden: yes
     sql: ${TABLE}."カテゴリID" ;;
   }
+
   measure: count {
     type: count
     drill_fields: [product_id, category_id, .count]

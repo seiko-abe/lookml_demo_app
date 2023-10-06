@@ -11,8 +11,9 @@ view: category_master {
     type: string
     sql: ${TABLE}."製品カテゴリ" ;;
   }
+
   measure: count {
     type: count
-    drill_fields: [category_id, public_.count, public_.count, public_.count, public_.count]
+    drill_fields: [category_id]
   }
 }
