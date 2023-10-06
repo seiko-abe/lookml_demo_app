@@ -31,6 +31,13 @@ include: "/views/**/*.view.lkml"                # include all views in the views
       type: left_outer
       relationship: many_to_one
       sql_on: ${budget_master.store_id} = ${sales_data.store_id} ;;
+    }
+    }
+  explore: store_master {
+    join: budget_master {
+      type: left_outer
+      relationship: many_to_one
+      sql_on: ${store_master.store_id} = ${budget_master.store_id} ;;
     }}
   explore: product_master {
     join: sales_data {
