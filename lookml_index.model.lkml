@@ -42,7 +42,7 @@ include: "/views/**/*.view.lkml"                # include all views in the views
   explore: product_master {
     join: sales_data {
       type: left_outer
-      relationship: many_to_one
+      relationship: one_to_many
       sql_on: ${product_master.product_id} = ${sales_data.product_id} ;;
     }
   }
