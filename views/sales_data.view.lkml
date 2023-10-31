@@ -60,7 +60,7 @@ view: sales_data {
   measure: sales_amount {
     type: sum
     label: "売上金額"
-    sql: ${TABLE}."売上";;
+    sql: abs(${TABLE}."売上");;
   }
 
   measure: count {
