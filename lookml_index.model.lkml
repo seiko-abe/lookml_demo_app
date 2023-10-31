@@ -45,6 +45,11 @@ include: "/views/**/*.view.lkml"                # include all views in the views
       relationship: one_to_many
       sql_on: ${product_master.product_id} = ${sales_data.product_id} ;;
     }
+    join: category_master {
+      type: left_outer
+      relationship: many_to_one
+      sql_on: ${product_master.category_id} = ${category_master.category_id} ;;
+    }
   }
   explore: category_master {
     join: product_master {
@@ -59,4 +64,4 @@ include: "/views/**/*.view.lkml"                # include all views in the views
       relationship: one_to_many
       sql_on: ${member.customer_id} = ${sales_data.customer_id} ;;
     }
-  }
+    }
