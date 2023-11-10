@@ -11,7 +11,8 @@ view: sales_data {
     type: date
     sql: DATE_TRUNC('month', TO_DATE(${TABLE}."売上日")) ;;
     label: "Sales Month"
-  }
+      }
+
   dimension:cost_price  {
     type: string
     sql: ${TABLE}."原価" ;;
