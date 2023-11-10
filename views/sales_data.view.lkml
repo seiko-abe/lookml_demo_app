@@ -8,7 +8,7 @@ view: sales_data {
     sql: ${TABLE}."店舗ID" ;;
   }
   dimension: sales_date {
-    type: date_month
+    type: date
     sql: DATE_TRUNC('month', TO_DATE(${TABLE}."売上日")) ;;
     label: "Sales Month"
   }
