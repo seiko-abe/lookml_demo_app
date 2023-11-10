@@ -10,8 +10,7 @@ view: sales_data {
   dimension:sales_date  {
     type: date_month
     sql: ${TABLE}."売上日"
-    SELECT DATE_TRUNC('month', sales_date) AS sales_month
-
+    DATE_TRUNC('month', sales_date) AS sales_month
   }
   dimension:cost_price  {
     type: string
