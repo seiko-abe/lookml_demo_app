@@ -8,7 +8,7 @@ view: sales_data {
     sql: ${TABLE}."店舗ID" ;;
   }
   dimension:sales_date  {
-    type: string
+    type: date_month
     sql: ${TABLE}."売上日" ;;
   }
   dimension:cost_price  {
