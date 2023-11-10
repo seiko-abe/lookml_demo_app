@@ -7,10 +7,10 @@ view: sales_data {
     type: number
     sql: ${TABLE}."店舗ID" ;;
   }
-  dimension:sales_date  {
+  dimension: sales_date {
     type: date_month
-    sql: ${TABLE}."売上日"
-    DATE_TRUNC('month', sales_date) AS sales_month
+    sql: DATE_TRUNC('month', ${TABLE}."売上日") ;;
+    label: "Sales Month"
   }
   dimension:cost_price  {
     type: string
