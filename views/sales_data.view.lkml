@@ -9,9 +9,9 @@ view: sales_data {
   }
   dimension: sales_date {
     type: date
-    sql: DATE_TRUNC('month', TO_DATE(${TABLE}."売上日")) ;;
+    sql: DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD')) ;;
     label: "Sales Month"
-      }
+  }
 
   dimension:cost_price  {
     type: string
