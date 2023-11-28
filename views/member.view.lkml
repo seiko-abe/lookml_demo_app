@@ -34,7 +34,7 @@ view: member {
   measure: member_amount {
     type: sum
     label: "合計会員"
-    sql: abs(${TABLE}."会員数";;
+    sql: abs(${TABLE}."会員数");;
   }
 
   measure: count {
