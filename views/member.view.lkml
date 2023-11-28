@@ -34,8 +34,9 @@ view: member {
   measure: member_amount {
     type: sum
     label: "合計会員"
-    sql: ${TABLE}."会員数";;
+    sql: abs(${TABLE}."会員数";;
   }
+
   measure: count {
     type: count
     drill_fields: [customer_id,]

@@ -49,16 +49,6 @@ view: sales_data {
     type: number
     sql: ${TABLE}."受注日付KEY" ;;
   }
-  # measure: earnings_total {
-  #   type: sum
-  #   label: "売上金額"
-  #   sql: ${TABLE}."売上" ;;
-  # }
-  # measure: quantity_total {
-  #   type: sum
-  #   label: "合計(売上数量)"
-  #   sql: ${TABLE}."数量";;
-  # }
   measure: sales_amount {
     type: sum
     label: "売上金額"
