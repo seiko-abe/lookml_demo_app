@@ -25,6 +25,11 @@ explore: sales_data {
     relationship: many_to_one
     sql_on: ${sales_data.store_id} = ${store_master.store_id} ;;
     }
+  # join: sales_data {
+  # type: left_outer
+  # relationship: many_to_one
+  # sql_on: ${sales_data.store_id} = ${.store_id} ;;
+
   }
   explore: budget_master {
     join: sales_data {
