@@ -34,16 +34,16 @@ view: sales_data {
     type: number
     sql: ${TABLE}."売上" ;;
   }
-  dimension: earnings_total {
-    type: number
-    sql: ${TABLE}."売上" ;;
-  }
-  dimension: earnings_yearly {
-    type: number
-    sql: ${TABLE}."年" ;;
-    # sql: "year" ;;  # フィールドのエイリアスを指定
-    # filters: [timeframe: "this year"] ;;# フィルタリング条件を指定
-  }
+  # dimension: earnings_total {
+  #   type: number
+  #   sql: ${TABLE}."売上" ;;
+  # }
+  # dimension: earnings_yearly {
+  #   type: number
+  #   sql: ${TABLE}."年" ;;
+  #   # sql: "year" ;;  # フィールドのエイリアスを指定
+  #   # filters: [timeframe: "this year"] ;;# フィルタリング条件を指定
+  # }
 
   dimension:product_id {
     type: number
