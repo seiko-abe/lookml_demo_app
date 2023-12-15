@@ -23,8 +23,15 @@ explore: sales_data {
   join: store_master {
     type: left_outer
     relationship: many_to_one
-    sql_on: ${sales_data.store_id} = ${store_master.store_id} ;;
-    }
+    sql_on: ${sales_data.store_id} = ${store_master.store_id};;
+  }
+  # join: member {
+  #   type: left_outer
+  #   relationship: one_to_many
+  #   sql_on: ${sales_data.customer_id} = ${member.customer_id};;
+  #   }
+
+
   # join: sales_data {
   # type: left_outer
   # relationship: many_to_one
