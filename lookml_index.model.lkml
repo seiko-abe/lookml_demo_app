@@ -19,12 +19,26 @@ include: "/views/**/*.view.lkml"                # include all views in the views
 #   }
 # }
 
-  explore: sales_data {
-    join: store_master {
-      type: left_outer
-      relationship: many_to_one
-      sql_on: ${sales_data.store_id} = ${store_master.store_id};;
+  # explore: sales_data {
+  #   join: store_master {
+  #     type: left_outer
+  #     relationship: many_to_one
+  #     sql_on: ${sales_data.store_id} = ${store_master.store_id};;
+  #   }
+
+    explore: sales_data {
+      join: store_master {
+        type: left_outer
+        relationship: many_to_one
+        sql_on: ${sales_data.store_id} = ${store_master.store_id};;
+      }
+
+      # 2019年のデータを表示するためのデフォルトフィルタ
+      always_filter: {
+        filters: [sales_date: "2019-01-01", sales_date: "2020-01-01"]
+      }
     }
+
 
   # join: member {
   #   type: left_outer
@@ -38,7 +52,6 @@ include: "/views/**/*.view.lkml"                # include all views in the views
   # relationship: many_to_one
   # sql_on: ${sales_data.store_id} = ${.store_id} ;;
 
-  }
   explore: budget_master {
     join: sales_data {
       type: left_outer
