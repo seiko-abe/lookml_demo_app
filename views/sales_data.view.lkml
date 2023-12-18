@@ -13,12 +13,14 @@ view: sales_data {
   #   sql: DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD')) ;;
   #   label: "Sales Month"
   #   }
+
   dimension: sales_date {
     type: date
-    sql: CASE WHEN EXTRACT(YEAR FROM ${TABLE}."売上日") = 2019
-         THEN DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD'))
-         WHEN EXTRACT(YEAR FROM ${TABLE}."売上日") = 2020
-         THEN DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD'))
+    sql: CASE
+          WHEN SUBSTRING(${TABLE}."売上日" FROM 1 FOR 4) = '2019'
+          THEN DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD'))
+          WHEN SUBSTRING(${TABLE}."売上日" FROM 1 FOR 4) = '2020'
+          THEN DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD'))
        END ;;
     label: "Sales Month"
   }
