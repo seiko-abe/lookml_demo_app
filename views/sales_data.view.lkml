@@ -8,21 +8,21 @@ view: sales_data {
     sql: ${TABLE}."店舗ID" ;;
   }
 
-  # dimension: sales_date {
-  #   type: date
-  #   sql: DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD')) ;;
-  #   label: "Sales Month"
-  #   }
-
   dimension: sales_date {
     type: date
-    sql: CASE
-          WHEN LEFT(${TABLE}."売上日", 4) = '2019'
-          THEN DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD'))
-          WHEN LEFT(${TABLE}."売上日", 4) = '2020'
-          THEN DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD'))
-       END ;;
-  }
+    sql: DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD')) ;;
+    label: "Sales Month"
+    }
+
+  # dimension: sales_date {
+  #   type: date
+  #   sql: CASE
+  #         WHEN LEFT(${TABLE}."売上日", 4) = '2019'
+  #         THEN DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD'))
+  #         WHEN LEFT(${TABLE}."売上日", 4) = '2020'
+  #         THEN DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD'))
+  #     END ;;
+  # }
 
   measure: sales_amount {
     type: sum
