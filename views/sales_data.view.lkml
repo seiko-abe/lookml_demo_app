@@ -17,12 +17,11 @@ view: sales_data {
   dimension: sales_date {
     type: date
     sql: CASE
-          WHEN SUBSTRING(${TABLE}."売上日" FROM 1 FOR 4) = '2019'
+          WHEN LEFT(${TABLE}."売上日", 4) = '2019'
           THEN DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD'))
-          WHEN SUBSTRING(${TABLE}."売上日" FROM 1 FOR 4) = '2020'
+          WHEN LEFT(${TABLE}."売上日", 4) = '2020'
           THEN DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD'))
        END ;;
-    label: "Sales Month"
   }
 
   measure: sales_amount {
