@@ -23,7 +23,7 @@ view: sales_data {
   measure: sales_amount_2019 {
     type: sum
     label: "2019年売上金額"
-    sql: CASE WHEN DATE_TRUNC('year', ${TABLE}."売上日") = '2019-01-01'
+    sql: CASE WHEN DATE_TRUNC('year', TO_DATE(${TABLE}."売上日",'YYYY/MM/DD')) = '2019-01-01'
          THEN abs(${TABLE}."売上")
          ELSE NULL
          END ;;
@@ -32,7 +32,7 @@ view: sales_data {
   measure: sales_amount_2020 {
     type: sum
     label: "2020年売上金額"
-    sql: CASE WHEN DATE_TRUNC('year', ${TABLE}."売上日") = '2020-01-01'
+    sql: CASE WHEN DATE_TRUNC('year', TO_DATE(${TABLE}."売上日",'YYYY/MM/DD')) = '2020-01-01'
          THEN abs(${TABLE}."売上")
          ELSE NULL
          END ;;
