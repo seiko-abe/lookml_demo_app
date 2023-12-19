@@ -8,11 +8,26 @@ view: sales_data {
     sql: ${TABLE}."店舗ID" ;;
   }
 
-  dimension: sales_date {
-    type: date
+  # dimension: sales_date {
+  #   type: date
+  #   sql: DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD')) ;;
+  #   label: "Sales Month"
+  #   }
+
+  dimension_group: sales_date {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
     sql: DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD')) ;;
     label: "Sales Month"
-    }
+  }
 
   # dimension: sales_date {
   #   type: date

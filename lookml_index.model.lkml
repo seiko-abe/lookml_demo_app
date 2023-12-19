@@ -19,26 +19,19 @@ include: "/views/**/*.view.lkml"                # include all views in the views
 #   }
 # }
 
-  # explore: sales_data {
-  #   join: store_master {
-  #     type: left_outer
-  #     relationship: many_to_one
-  #     sql_on: ${sales_data.store_id} = ${store_master.store_id};;
-  #   }
-
     explore: sales_data {
       join: store_master {
         type: left_outer
         relationship: many_to_one
         sql_on: ${sales_data.store_id} = ${store_master.store_id};;
       }
-
-      # 2019年のデータを表示するためのフィルタ
-      always_filter: {
-        filters: [sales_date: "2019-01-01", sales_date: "2020-01-01"]
-        filters: [sales_date: "2020-01-01", sales_date: "2020-12-31"]
       }
-    }
+    # 2019～2020年のデータを表示するためのフィルタ
+    #   always_filter: {
+    #     filters: [sales_date: "2019-01-01", sales_date: "2020-01-01"]
+    #     filters: [sales_date: "2020-01-01", sales_date: "2020-12-31"]
+    #   }
+    # }
 
 
   # join: member {
