@@ -18,7 +18,6 @@ view: sales_data {
     type: sum
     label: "売上金額"
     sql: abs(${TABLE}."売上");;
-    filters: [sales_date: "2019-01-01 to 2020-12-31"]
   }
 
   dimension:cost_price  {
