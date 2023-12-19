@@ -8,42 +8,19 @@ view: sales_data {
     sql: ${TABLE}."店舗ID" ;;
   }
 
-  # dimension: sales_date {
-  #   type: date
-  #   sql: DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD')) ;;
-  #   label: "Sales Month"
-  #   }
-
-  dimension_group: sales_date {
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
+  dimension: sales_date {
+    type: date
     sql: DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD')) ;;
     label: "Sales Month"
-  }
-
-  # dimension: sales_date {
-  #   type: date
-  #   sql: CASE
-  #         WHEN LEFT(${TABLE}."売上日", 4) = '2019'
-  #         THEN DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD'))
-  #         WHEN LEFT(${TABLE}."売上日", 4) = '2020'
-  #         THEN DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD'))
-  #     END ;;
-  # }
+    }
 
   measure: sales_amount {
     type: sum
     label: "売上金額"
     sql: abs(${TABLE}."売上");;
+    filters: [sales_date: "2019-01-01 to 2020-12-31"]
   }
+
   dimension:cost_price  {
     type: string
     sql: ${TABLE}."原価" ;;
@@ -96,11 +73,4 @@ view: sales_data {
     type: count
     drill_fields: [store_id, product_id, customer_id, .count]
   }
-  # 2019年のデータを表示するためのフィルタリング
-
-  # filter: sales_date_2019 {
-  #   field: sales_date_2019
-  #   value: "2019-01-01"
-  #   operator: gte
-  # }
 }
