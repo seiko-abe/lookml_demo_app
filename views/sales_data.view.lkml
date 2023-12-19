@@ -14,22 +14,28 @@ view: sales_data {
     label: "Sales Month"
     }
 
-  measure: sales_amount {
-    type: sum
-    label: "売上金額"
-    sql: abs(${TABLE}."売上");;
-  }
+  # measure: sales_amount {
+  #   type: sum
+  #   label: "売上金額"
+  #   sql: abs(${TABLE}."売上");;
+  # }
 
   measure: sales_amount_2019 {
     type: sum
     label: "2019年売上金額"
-    sql: CASE WHEN EXTRACT(YEAR FROM ${TABLE}."売上日") = 2019 THEN abs(${TABLE}."売上") ELSE NULL END ;;
+    sql: CASE WHEN EXTRACT(YEAR FROM ${TABLE}."売上日") = 2019
+         THEN abs(${TABLE}."売上")
+         ELSE NULL
+         END ;;
   }
 
   measure: sales_amount_2020 {
     type: sum
     label: "2020年売上金額"
-    sql: CASE WHEN EXTRACT(YEAR FROM ${TABLE}."売上日") = 2020 THEN abs(${TABLE}."売上") ELSE NULL END ;;
+    sql: CASE WHEN EXTRACT(YEAR FROM ${TABLE}."売上日") = 2020
+         THEN abs(${TABLE}."売上")
+         ELSE NULL
+         END ;;
   }
 
   dimension:cost_price  {
