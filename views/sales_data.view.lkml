@@ -23,7 +23,7 @@ view: sales_data {
   measure: sales_amount_2019 {
     type: sum
     label: "2019年売上金額"
-    sql: CASE WHEN EXTRACT(YEAR FROM ${TABLE}."売上日") = 2019
+    sql: CASE WHEN DATE_TRUNC('year', ${TABLE}."売上日") = '2019-01-01'
          THEN abs(${TABLE}."売上")
          ELSE NULL
          END ;;
@@ -32,11 +32,29 @@ view: sales_data {
   measure: sales_amount_2020 {
     type: sum
     label: "2020年売上金額"
-    sql: CASE WHEN EXTRACT(YEAR FROM ${TABLE}."売上日") = 2020
+    sql: CASE WHEN DATE_TRUNC('year', ${TABLE}."売上日") = '2020-01-01'
          THEN abs(${TABLE}."売上")
          ELSE NULL
          END ;;
   }
+
+  # measure: sales_amount_2019 {
+  #   type: sum
+  #   label: "2019年売上金額"
+  #   sql: CASE WHEN EXTRACT(YEAR FROM ${TABLE}."売上日") = 2019
+  #       THEN abs(${TABLE}."売上")
+  #       ELSE NULL
+  #       END ;;
+  # }
+
+  # measure: sales_amount_2020 {
+  #   type: sum
+  #   label: "2020年売上金額"
+  #   sql: CASE WHEN EXTRACT(YEAR FROM ${TABLE}."売上日") = 2020
+  #       THEN abs(${TABLE}."売上")
+  #       ELSE NULL
+  #       END ;;
+  # }
 
   dimension:cost_price  {
     type: string
