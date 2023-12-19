@@ -14,11 +14,11 @@ view: sales_data {
     label: "Sales Month"
     }
 
-  # measure: sales_amount {
-  #   type: sum
-  #   label: "売上金額"
-  #   sql: abs(${TABLE}."売上");;
-  # }
+  measure: sales_amount {
+    type: sum
+    label: "売上金額"
+    sql: abs(${TABLE}."売上");;
+  }
 
   measure: sales_amount_2019 {
     type: sum
