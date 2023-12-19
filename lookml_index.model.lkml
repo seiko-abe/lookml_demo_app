@@ -25,7 +25,15 @@ include: "/views/**/*.view.lkml"                # include all views in the views
         relationship: many_to_one
         sql_on: ${sales_data.store_id} = ${store_master.store_id};;
       }
+      # sales_dataのセルフジョインを追加
+
+      # join:sales_data{
+      #   type: left_outer
+      #   relationship: many_to_many
+      #   sql_on: ${sales_data.sales_date - 1 } = ${sales_data.sales_date};;
+      # }
       }
+
     # 2019～2020年のデータを表示するためのフィルタ
     #   always_filter: {
     #     filters: [sales_date: "2019-01-01", sales_date: "2020-01-01"]
