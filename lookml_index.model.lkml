@@ -33,14 +33,6 @@ include: "/views/**/*.view.lkml"                # include all views in the views
     #   }
     # }
 
-
-  # join: member {
-  #   type: left_outer
-  #   relationship: one_to_many
-  #   sql_on: ${sales_data.customer_id} = ${member.customer_id};;
-  #   }
-
-
   # join: sales_data {
   # type: left_outer
   # relationship: many_to_one
