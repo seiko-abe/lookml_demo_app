@@ -30,8 +30,11 @@ include: "/views/**/*.view.lkml"                # include all views in the views
        join:sales_data{
          type: left_outer
          relationship: many_to_many
-         sql_on: ${sales_data.sales_date - 1 } = ${sales_data.sales_date};;
+         sql_on: ${sales_data.sales_date - 1 } = ${sales_data.sales_date}
+          AND ${sales_data.store_id } = ${sales_data.store_id};;
         }
+      }
+
         #         sales_data.sales_amount as sales_amount_2019
         #         LEFT JOIN
         #         sales_data.sales_amount as sales_amount_2020
@@ -39,7 +42,6 @@ include: "/views/**/*.view.lkml"                # include all views in the views
         #           .sales_amount.sales_amount_2020 - 1 = sales_data.sales_amount.sales_amount_2019
         #         AND
         # sales_data.store_id = sales_data.store_id;;
-       }
 
     # 2019～2020年のデータを表示するためのフィルタ
     #   always_filter: {
