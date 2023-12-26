@@ -24,7 +24,7 @@ include: "/views/**/*.view.lkml"                # include all views in the views
         type: left_outer
         relationship: many_to_one
         sql_on: ${sales_data.store_id} = ${store_master.store_id}
-    }
+
       # sales_dataのセルフジョインを追加
        join:sales_data{
          type: left_outer
