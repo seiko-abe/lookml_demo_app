@@ -18,9 +18,10 @@ view: sales_data {
     type: sum
     label: "売上金額"
     sql: abs(${TABLE}."売上")
-        sales_amount as sales_amount_2019
-    LEFT JOIN sales_amount as sales_amount_2020
-    ON sales_amount_2020 - 1 = sales_amount_2019;;
+        earnings as sales_amount_2019
+        LEFT JOIN
+        earnings as sales_amount_2020
+         ON earnings.sales_amount_2020 - 1 = earnings.sales_amount_2019;;
         # AND curr.shop_id = prev.shop_id
 }
 
