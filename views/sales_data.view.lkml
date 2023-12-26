@@ -17,14 +17,23 @@ view: sales_data {
   measure: sales_amount {
     type: sum
     label: "売上金額"
-    sql: abs(${TABLE}."売上")
-        earnings as sales_amount_2019
-        LEFT JOIN
-        earnings as sales_amount_2020
-         ON earnings.sales_amount_2020 - 1 = earnings.sales_amount_2019;;
-        # AND curr.shop_id = prev.shop_id
-}
+    sql: CASE WHEN ${TABLE}."売上日" = 2020
+            THEN ${TABLE}."売上"
+            ELSE NULL END ;;
+  }
 
+
+
+#   measure: sales_amount {
+#     type: sum
+#     label: "売上金額"
+#     sql: abs(${TABLE}."売上")
+#         earnings as sales_amount_2019
+#         LEFT JOIN
+#         earnings as sales_amount_2020
+#         ON earnings.sales_amount_2020 - 1 = earnings.sales_amount_2019;;
+#         # AND curr.shop_id = prev.shop_id
+# }
 
   # measure: sales_amount_2019 {
   #   type: sum
