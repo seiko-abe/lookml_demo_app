@@ -32,6 +32,7 @@ include: "/views/**/*.view.lkml"                # include all views in the views
          sql_on: ${sales_data.sales_date - 1 } = ${sales_data.sales_date};;
       }
       }
+
         #         sales_data.sales_amount as sales_amount_2019
         #         LEFT JOIN
         #         sales_data.sales_amount as sales_amount_2020
