@@ -23,15 +23,18 @@ include: "/views/**/*.view.lkml"                # include all views in the views
       join: store_master {
         type: left_outer
         relationship: many_to_one
-        sql_on: ${sales_data.store_id} = ${store_master.store_id}
+        sql_on: ${sales_data.store_id} = ${store_master.store_id};;
+      }
 
       # sales_dataのセルフジョインを追加
-       join:sales_data{
+       join:sales_data2{
+        from: sales_data
+        view_label: "last_year_sales_data"
          type: left_outer
          relationship: many_to_many
-         sql_on: ${sales_data.sales_date - 1 } = ${sales_data.sales_date};;
+         sql_on:DATEADD(year,2, ${sales_data2.sales_date} = ${sales_data.sales_date};;
       }
-      }
+  }
 
         #         sales_data.sales_amount as sales_amount_2019
         #         LEFT JOIN
