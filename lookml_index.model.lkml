@@ -26,32 +26,15 @@ include: "/views/**/*.view.lkml"                # include all views in the views
         sql_on: ${sales_data.store_id} = ${store_master.store_id};;
       }
 
-      # sales_dataのセルフジョインを追加
-       join:sales_data2{
-        from: sales_data
-        view_label: "last_year_sales_data"
-         type: left_outer
-         relationship: many_to_many
-         sql_on:DATEADD(year,2, ${sales_data2.sales_date} = ${sales_data.sales_date};;
-      }
-  }
-
-        #         sales_data.sales_amount as sales_amount_2019
-        #         LEFT JOIN
-        #         sales_data.sales_amount as sales_amount_2020
-        #         ON
-        #           .sales_amount.sales_amount_2020 - 1 = sales_data.sales_amount.sales_amount_2019
-        #         AND
-        # sales_data.store_id = sales_data.store_id;;
-
-    # 2019～2020年のデータを表示するためのフィルタ
-    #   always_filter: {
-    #     filters: [sales_date: "2019-01-01", sales_date: "2020-01-01"]
-    #     filters: [sales_date: "2020-01-01", sales_date: "2020-12-31"]
-    #   }
-    # }
-
-
+    # sales_dataのセルフジョインを追加
+    join:sales_data2{
+      from: sales_data
+      view_label: "last_year_sales_data"
+      type: left_outer
+      relationship: many_to_many
+      sql_on:DATEADD(year,2, ${sales_data2.sales_date} = ${sales_data.sales_date};;
+    }
+    }
   explore: budget_master {
     join: sales_data {
       type: left_outer
