@@ -24,7 +24,7 @@ include: "/views/**/*.view.lkml"                # include all views in the views
         type: left_outer
         relationship: many_to_one
         sql_on: ${sales_data.store_id} = ${store_master.store_id};;
-      }
+  }
 
     # sales_dataのセルフジョインを追加
     join:sales_data2{
@@ -34,14 +34,15 @@ include: "/views/**/*.view.lkml"                # include all views in the views
       relationship: many_to_many
       sql_on:DATEADD(year,2, ${sales_data2.sales_date} = ${sales_data.sales_date};;
     }
-    }
+  }
+
   explore: budget_master {
     join: sales_data {
       type: left_outer
       relationship: many_to_one
       sql_on: ${budget_master.store_id} = ${sales_data.store_id} ;;
     }
-    }
+  }
 
   explore: store_master {
     join: budget_master {
@@ -49,7 +50,7 @@ include: "/views/**/*.view.lkml"                # include all views in the views
       relationship: many_to_one
       sql_on: ${store_master.store_id} = ${budget_master.store_id} ;;
     }
-    }
+  }
 
   explore: product_master {
     extends: [sales_data,category_master]
@@ -71,7 +72,7 @@ include: "/views/**/*.view.lkml"                # include all views in the views
       relationship: one_to_many
       sql_on: ${category_master.category_id} = ${product_master.category_id} ;;
     }
-    }
+  }
 
   explore: member {
     join: sales_data {
@@ -79,4 +80,4 @@ include: "/views/**/*.view.lkml"                # include all views in the views
       relationship: one_to_many
       sql_on: ${member.customer_id} = ${sales_data.customer_id} ;;
   }
-  }
+}
