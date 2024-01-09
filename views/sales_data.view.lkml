@@ -9,7 +9,6 @@ view: sales_data {
   }
 
   dimension: sales_date {
-    primary_key: yes
     type: date
     sql: DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD')) ;;
     label: "Sales Month"
@@ -74,7 +73,7 @@ view: sales_data {
     sql: ${TABLE}."伝票番号" ;;
   }
   dimension:earnings  {
-    # primary_key: yes
+    primary_key: yes
     type: number
     sql: ${TABLE}."売上" ;;
   }
