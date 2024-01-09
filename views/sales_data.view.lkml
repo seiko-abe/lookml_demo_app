@@ -99,7 +99,7 @@ view: sales_data {
     sql: ${TABLE}."顧客ID" ;;
   }
   dimension: order_date_key {
-    # primary_key: yes
+    primary_key: yes
     type: number
     sql: ${TABLE}."受注日付KEY" ;;
   }
