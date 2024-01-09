@@ -69,7 +69,7 @@ view: sales_data {
     sql: ${TABLE}."数量" ;;
   }
   dimension:slip_number  {
-    # primary_key: yes
+    primary_key: yes
     type: string
     sql: ${TABLE}."伝票番号" ;;
   }
