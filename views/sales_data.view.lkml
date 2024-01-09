@@ -97,7 +97,7 @@ view: sales_data {
     primary_key: yes
     type: number
     # hidden: yes
-    sql: CONCAT(${TABLE}."顧客ID") ;;
+    sql: CONCAT(${TABLE}."顧客ID","伝票番号") ;;
   }
   dimension: order_date_key {
     # primary_key: yes
