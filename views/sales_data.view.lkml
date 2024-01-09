@@ -70,7 +70,7 @@ view: sales_data {
   }
   dimension:slip_number  {
     type: string
-    sql: ${TABLE}."伝票番号" ;;
+    sql: CONCAT(${TABLE}."伝票番号") ;;
   }
   dimension:earnings  {
     # primary_key: yes
@@ -102,7 +102,7 @@ view: sales_data {
   dimension: order_date_key {
     # primary_key: yes
     type: number
-    sql: CONCAT(${TABLE}."受注日付KEY");;
+    sql: ${TABLE}."受注日付KEY";;
   }
 
   measure: count {
