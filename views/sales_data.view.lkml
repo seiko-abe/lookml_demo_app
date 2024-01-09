@@ -94,14 +94,15 @@ view: sales_data {
     sql: ${TABLE}."製品ID" ;;
   }
   dimension: customer_id {
-    type: number
-    # hidden: yes
-    sql: ${TABLE}."顧客ID" ;;
-  }
-  dimension: order_date_key {
     primary_key: yes
     type: number
-    sql: ${TABLE}."受注日付KEY" ;;
+    # hidden: yes
+    sql: CONCAT(${TABLE}."顧客ID") ;;
+  }
+  dimension: order_date_key {
+    # primary_key: yes
+    type: number
+    sql: CONCAT(${TABLE}."受注日付KEY");;
   }
 
   measure: count {
