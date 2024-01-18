@@ -31,11 +31,11 @@ include: "/views/**/*.view.lkml"                # include all views in the views
       from: sales_data
       view_label: "last_year_sales_data"
       type: left_outer
-      relationship: many_to_one
-      sql_on: DATEADD(year, 2, ${sales_data2.sales_date}) = ${sales_data.sales_date}
+      relationship: many_to_many
+      sql_on: DATEADD(${sales_data2.sales_date},INTERVAL 1 YEAR) = ${sales_data.sales_date}
       ;;
     }
-  }
+}
 
   explore: budget_master {
     join: sales_data {
