@@ -32,7 +32,7 @@ include: "/views/**/*.view.lkml"                # include all views in the views
       view_label: "last_year_sales_data"
       type: left_outer
       relationship: many_to_many
-      sql_on: DATEADD(year, -2, ${sales_data2.sales_date}) = ${sales_data.sales_date}
+      sql_on: DATEADD(year, 2, ${sales_data.sales_date}) = ${sales_data.sales_date}
       ;;
     }
   }
