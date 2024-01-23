@@ -35,6 +35,13 @@ include: "/views/**/*.view.lkml"                # include all views in the views
        sql_on: DATEADD(year, 2, ${sales_data.sales_date}) = ${sales_data2.sales_date};;
        }
   }
+    explore: sales_data_summary {
+    join: sales_data {
+      relationship: many_to_many
+      type:left_outer
+      sql_on: ${sales_data.sales_date} = ${sales_data_summary.sales_day_2020} ;;
+    }
+  }
   explore: budget_master {
     join: sales_data {
       type: left_outer
