@@ -14,21 +14,21 @@ view: sales_data_summary {
 
   dimension: sales_day_2019 {
     type: date
-    sql: ${TABLE}.売上日 ;;
+    sql: ${TABLE}."売上日" ;;
   }
 
   dimension: sales_day_2020 {
     type: date
-    sql: DATE_ADD(${TABLE}.売上日, 1, 'YEAR') ;;
+    sql: DATE_ADD(${TABLE}."売上日", 1, 'YEAR') ;;
   }
 
   measure: sales_amount_2019 {
     type: sum
-    sql: ${TABLE}.売上 ;;
+    sql: ${TABLE}."売上" ;;
   }
 
   measure: sales_amount_2020 {
     type: sum
-    sql: ${TABLE}.売上 ;;
+    sql: ${TABLE}."売上" ;;
   }
 }
