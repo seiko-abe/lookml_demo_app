@@ -1,6 +1,6 @@
 view: sales_data_summary {
   derived_table: {
-    sql: |-
+    sql:
       SELECT
         sales_data."店舗ID" AS shop_id,
         DATE_TRUNC('MONTH', DATE(sales_data."売上日", 'YYYY/MM/DD')) AS "売上日",
