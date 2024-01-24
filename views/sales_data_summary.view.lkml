@@ -21,7 +21,7 @@ view: sales_data_summary {
   dimension: sales_day_2020 {
     type: date
     label: "2020年売上日"
-    sql:DATETIME_ADD(year sales_data_summary."売上日", INTERVAL 1 YEAR);;
+    sql:DATE_ADD('year',1,sales_data_summary."売上日");;
     # DATE_ADD(sales_data_summary."売上日", 1, 'YEAR') ;;
   }
 
