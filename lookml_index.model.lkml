@@ -42,6 +42,7 @@ include: "/views/**/*.view.lkml"                # include all views in the views
           sql_on: ${sales_data_summary.sales_day_2019} = ${sales_data.sales_date};;
         }
   }
+
   explore: budget_master {
     join: sales_data {
       type: left_outer
