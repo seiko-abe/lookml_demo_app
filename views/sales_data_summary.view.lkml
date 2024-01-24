@@ -21,7 +21,7 @@ view: sales_data_summary {
   dimension: sales_day_2020 {
     type: date
     label: "2020年売上日"
-    sql: DATE_TRUNC('YEAR',${TABLE}."売上日") ;;
+    sql: DATE_ADD(sales_data_summary."売上日", 1, 'YEAR') ;;
   }
 
   measure: sales_amount_2019 {
