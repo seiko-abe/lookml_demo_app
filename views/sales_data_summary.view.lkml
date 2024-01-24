@@ -14,11 +14,13 @@ view: sales_data_summary {
 
   dimension: sales_day_2019 {
     type: date
-    sql: DATE_TRUNC('month', TO_DATE(${TABLE}."売上日", 'YYYY/MM/DD'));;
+    label: "2019年売上日"
+    sql: ${TABLE}."売上日";;
   }
 
   dimension: sales_day_2020 {
     type: date
+    label: "2020年売上日"
     sql: DATE_ADD(${TABLE}."売上日", 1, 'YEAR') ;;
   }
 
