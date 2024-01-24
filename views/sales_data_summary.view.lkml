@@ -27,12 +27,18 @@ view: sales_data_summary {
   measure: sales_amount_2019 {
     type: sum
     label: "2019年売上金額"
-    sql: ${TABLE}."売上" < '2020-01-01';;
-  }
+    sql: ${TABLE}."売上"
+    filters: {
+      field: ${TABLE}."売上日"
+      value: "< '2020-01-01'";;
+    }
 
   measure: sales_amount_2020 {
     type: sum
     label: "2020年売上金額"
-    sql: ${TABLE}."売上" >= '2020-01-01';;
-  }
+    sql: ${TABLE}."売上"
+    filters: {
+      field: ${TABLE}."売上日"
+      value: ">= '2020-01-01'";;
+    }
 }
